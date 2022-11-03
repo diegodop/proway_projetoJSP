@@ -30,6 +30,7 @@
             <label for="texto" class="form-label">Postagem:</label>
             <br>
             <textarea name="texto" id="texto" cols="100" rows="10"><% out.write(post.getTexto()); %></textarea>
+            <br>
 
             <button class="btn btn-primary">Salvar Alteração</button>
         </form>

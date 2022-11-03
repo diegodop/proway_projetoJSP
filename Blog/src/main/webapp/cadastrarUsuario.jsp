@@ -44,6 +44,7 @@
                 usuario.setEmail(email);
                 usuario.setSenha(senha);
                 DAOUsuario.salvar(usuario);
+                usuario = DAOUsuario.localizarUsuarioPorEmail(email);
                 session.setAttribute("loginJSP", usuario);
                 response.sendRedirect("index.jsp"); 
 

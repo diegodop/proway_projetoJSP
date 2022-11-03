@@ -29,6 +29,25 @@ public class DAOUsuario {
         return u;
     }
 
+    public static Usuario localizarUsuarioPorEmail(String email){
+        Connection con = Conexao.conectar();
+        Usuario u = new Usuario();
+        try {
+            PreparedStatement stm = con.prepareStatement("select * from usuarios where email = '" + email + "'");
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()){
+                u.setId(rs.getInt("id"));
+                u.setNome(rs.getString("nome"));
+                u.setEmail(rs.getString("email"));
+                u.setSenha(rs.getString("senha"));
+                u.setModerador(rs.getBoolean("moderador"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return u;
+    }
+
     public static boolean verificarEmailCadastrado(String email){
         Connection con = Conexao.conectar();
         Usuario u = new Usuario();
