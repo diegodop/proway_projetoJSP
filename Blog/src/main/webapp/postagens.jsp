@@ -18,7 +18,15 @@
 <body>
     <div class="container">
 
-        <%@ include file="header.jsp" %> 
+        <%@ include file="header.jsp" %>
+        <%  if (!logado) {
+            response.sendRedirect("index.jsp");
+        }
+        if (logado && !user.isModerador()) {
+            response.sendRedirect("index.jsp");
+        }
+    
+    %>
 
         <button class="btn btn-primary mb-3" onclick=location.href='cadastrarPostagem.jsp'>Cadastrar Postagem</button>
 

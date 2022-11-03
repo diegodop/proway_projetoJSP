@@ -21,6 +21,14 @@
     <div class="container">
 
         <%@ include file="header.jsp" %>
+        <%  if (!logado) {
+                response.sendRedirect("index.jsp");
+            }
+            if (logado && !user.isModerador()) {
+                response.sendRedirect("index.jsp");
+            }
+        
+        %>
         
         <h2>Página de Moderação de Comentários</h2>
         <br>

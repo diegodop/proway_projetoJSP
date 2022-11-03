@@ -32,13 +32,16 @@
         <p><% out.write(post.getTexto()); %></p>
 
         <hr>
-        <% if(logado) { %>
+        <% if(logado){ %>
+            <% if(!user.isModerador()) { %>
         <form action="verPost.jsp" method="post">
             <input type="text" id="id" name="id" class="form-control" hidden value=<% out.write(""+id); %>>
             <p>Faça o seu comentário:</p>
             <textarea name="comentario" id="comentario" cols="50" rows="5"></textarea>
+            <br>
             <button class="btn btn-primary">Salvar</button>
         </form>
+            <% } %>
         <% } else { %>
             <p style="color: red;">Para comentar é necessário efetuar o login!</p>
         <% } %>
